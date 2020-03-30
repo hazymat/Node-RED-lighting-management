@@ -46,6 +46,10 @@ Note about Configuration Storage
 ---
 - The lighting system has a configuration which is stored in Node-RED's global context. It is therefore restored after power outage etc.
 - Configuration information is stored in objects. When a fixture, zone, or scene is created, the user specifies an ID, this ID becomes the object key. As duplicates would technically be possible, we therefore check for duplicates when storing such items. The key for a fixture-to-zone mapping is automatically generated as a concatenation of the fixture and zone keys.
+- We also check for the presence of the "top level" objects in the first place.
+- Most updates are done by simply overwriting the object that has the same key.
+- The UI has some basic validation when user creates items, with user feedback.
+- When you see a 5 second delay node anywhere (see screenshots below) this is there to show the validation message on the UI for 5 seconds then disappear and clear the form.
 - Config info includes the following:
  - fixtures (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
  - zones. This also includes scene configuration as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
