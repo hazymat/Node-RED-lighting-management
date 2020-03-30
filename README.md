@@ -50,9 +50,10 @@ Note about Configuration Storage
 - Most updates are done by simply overwriting the object that has the same key.
 - The UI has some basic validation when user creates items, with user feedback.
 - When you see a 5 second delay node anywhere (see screenshots below) this is there to show the validation message on the UI for 5 seconds then disappear and clear the form.
-- Config info includes the following:
- - fixtures (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
- - zones. This also includes scene configuration as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
+- Config info includes the following 4 "top level" object types:
+   - **fixtures** (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
+   - **zones**. This object type also includes **scene configuration** as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
+   - **fixture-to-zone mappings**.
 
 Light control interface
 ---
