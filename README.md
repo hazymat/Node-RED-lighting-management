@@ -9,7 +9,7 @@ General
 - Management of light "fixtures", "zones", and "scenes"
 - NR Dashboard user interface which auto-populates sliders, colour pickers, and scene selection buttons based on which fixtures are in the given zone we are controlling
 - Front-end management of the system (i.e. from NR Dashboard), where you can create zones, assign fixtures to zones etc.
-- All config info stored into context (home.light.config)
+- All config info stored in global context (home.light.config).
 - Light circuits or fittings (or individual bulbs in the case of e.g. Philips Hue) are called Fixtures
 - Fixtures, zones, and mappings are 3 sections under the "manage lighting" tab
 - Scene management is done as part of this, but UI for scenes (add/remove scene, populate or set scene colours or light levels) will be under the tab where lighting controls for a given zone are. This enables e.g. family members to create / update / delete lighting scenes for that zone, on the fly. (Buttons are updated dynamically so user can test their new scene and tweak quickly)
@@ -41,6 +41,14 @@ Assign fixture to zone
 Scene Management
 ---
 - This is done under the control template for each individual zone
+
+Note about Configuration Storage
+---
+- The lighting system has a configuration which is stored in Node-RED's global context. It is therefore restored after power outage etc.
+- Configuration information is stored in objects. When a fixture, zone, or scene is created, the user specifies an ID, this ID becomes the object key. As duplicates would technically be possible, we therefore check for duplicates when storing such items. The key for a fixture-to-zone mapping is automatically generated as a concatenation of the fixture and zone keys.
+- Config info includes the following:
+ - fixtures (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
+ - zones. This also includes scene configuration as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
 
 Light control interface
 ---
