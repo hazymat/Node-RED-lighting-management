@@ -1,0 +1,10 @@
+Version
+
+04/04/2020
+- Show currently selected scene (via background colour of button)
+- Show whether we deviated from a scene i.e. we tweaked a slider or colour
+- Additional keys in the zone object:
+ - currentscene (id of scene selected)
+ - sceneselect_date
+ - sceneselect_time
+ - currentscene_edited (boolean)
