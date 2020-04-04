@@ -14,6 +14,20 @@ General
 - Fixtures, zones, and mappings are 3 sections under the "manage lighting" tab
 - Scene management is done as part of this, but UI for scenes (add/remove scene, populate or set scene colours or light levels) will be under the tab where lighting controls for a given zone are. This enables e.g. family members to create / update / delete lighting scenes for that zone, on the fly. (Buttons are updated dynamically so user can test their new scene and tweak quickly)
 
+Light control interface
+---
+- Press a dashboard button to select a lighting scene
+ - Zone lighting is changed accordingly, and stored to memory
+ - Currently selected scene button is lit up
+- Use sliders and colour selection to change individual lights
+ - A star is shown on that button to denote the fact we have an "unsaved" scene (or the lights have "deviated" from the scene previously set).
+- Manage scenes within this interface: create/update/delete scenes
+ - Scene buttons update in realtime as you make changes
+ - The scene shows as "saved" (star disappears) when updated
+ - The scene is shown as selected and saved when you create a new one
+- This UI is to be displayed on e.g. a tablet mounted on the wall in a given zone. Or just on your mobile device. Or you can interface with any other controller you like, by just sending an MQTT message to select a scene. For example I'll be using my own homemade scene controller wall boxes with multiple scene buttons that will correspond to the first 5 scenes you create.
+- Easily remove the scene management section, if you prefer not to have this option in your zone controller
+
 Fixtures
 ---
 - Add fixture (user specifies ID, location, type, control type)
@@ -40,7 +54,7 @@ Assign fixture to zone
 
 Scene Management
 ---
-- This is done under the control template for each individual zone
+- This is done under the control template for each individual zone, see "Light control interface" heading above
 
 Note about Configuration Storage
 ---
@@ -54,11 +68,6 @@ Note about Configuration Storage
    - **fixtures** (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
    - **zones**. This object type also includes **scene configuration** as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
    - **fixture-to-zone mappings**.
-
-Light control interface
----
-- To be displayed on e.g. a tablet mounted on the wall in a given zone. Or just on your mobile device. Or you can interface with any other controller you like. For example I'll be using my own homemade scene controller wall boxes with multiple scene buttons that will correspond to the first 5 scenes you create.
-- Easily remove the scene management section, if you prefer not to have this option in your zone controller
 
 Screenshot of front end 1: ![frontend1](https://user-images.githubusercontent.com/7063284/77906908-a94d0980-7280-11ea-9722-7e968f1d118e.jpg)
 
