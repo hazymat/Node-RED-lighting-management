@@ -20,7 +20,7 @@ Light control interface
   - Zone lighting is changed accordingly, and stored to memory
   - Currently selected scene button is lit up
 - Use sliders and colour selection to change individual lights
-  - A star is shown on that button to denote the fact we have an "unsaved" scene (or the lights have "deviated" from the scene previously set).
+  - A star is shown on current scene button to denote the fact we have an "unsaved" scene (or the lights have "deviated" from the scene previously set).
 - Manage scenes within this interface: create/update/delete scenes
   - Scene buttons update in realtime as you make changes
   - The scene shows as "saved" (star disappears) when updated
