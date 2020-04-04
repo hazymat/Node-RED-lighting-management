@@ -17,14 +17,14 @@ General
 Light control interface
 ---
 - Press a dashboard button to select a lighting scene
- - Zone lighting is changed accordingly, and stored to memory
- - Currently selected scene button is lit up
+  - Zone lighting is changed accordingly, and stored to memory
+  - Currently selected scene button is lit up
 - Use sliders and colour selection to change individual lights
- - A star is shown on that button to denote the fact we have an "unsaved" scene (or the lights have "deviated" from the scene previously set).
+  - A star is shown on that button to denote the fact we have an "unsaved" scene (or the lights have "deviated" from the scene previously set).
 - Manage scenes within this interface: create/update/delete scenes
- - Scene buttons update in realtime as you make changes
- - The scene shows as "saved" (star disappears) when updated
- - The scene is shown as selected and saved when you create a new one
+  - Scene buttons update in realtime as you make changes
+  - The scene shows as "saved" (star disappears) when updated
+  - The scene is shown as selected and saved when you create a new one
 - This UI is to be displayed on e.g. a tablet mounted on the wall in a given zone. Or just on your mobile device. Or you can interface with any other controller you like, by just sending an MQTT message to select a scene. For example I'll be using my own homemade scene controller wall boxes with multiple scene buttons that will correspond to the first 5 scenes you create.
 - Easily remove the scene management section, if you prefer not to have this option in your zone controller
 
