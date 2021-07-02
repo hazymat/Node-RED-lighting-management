@@ -1,5 +1,24 @@
 Version
 
+02/07/2021
+- Support for switches in the scene
+- Support for a master dimmer for the zone (can be enabled / disabled)
+- Report back scene changes over MQTT
+- Bugfixes and code re-factoring
+ - The "actuate" and "scene manage" functions now wrapped in two new subflows
+ - Many other changes too numerous to mention
+- Support for multisensors:
+ - A multisensor is a single device containing various presence sensors e.g. PIR, Microwave, Audio presence detection
+ - When presence is detection, lights turn on to a "favourite" or default scene. This default is indicated with a red heart on the UI and can be changed easily.
+ - A multisensor can be created in dashboard and assigned to a zone
+ - Zones can contain more than one multisensor
+ - When the multisensor is assigned to the zone, the scene controller UI shows various options to
+  - enable / disable each detection type
+  - display detections
+  - change thresholds for light / sound level
+  - change the sensor timer (i.e. delay) - how long light stays on for, after detection finishes. This is facilitated with timestamps and polling, kind of like cron.
+  - enable / disable actual LEDs on the multisensor unit itself
+
 04/04/2020
 - Show currently selected scene (via background colour of button)
 - Show whether we deviated from a scene i.e. we tweaked a slider or colour
