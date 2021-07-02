@@ -17,18 +17,18 @@ What's the use case?
 Overview
 -------
 - The lighting management system has an emphasis on “architectural lighting control”
- - Strong support for light dimmers, lighting colours, lighting scenes, presence sensors
--	Designed with the following in mind:
- - open-plan spaces (i.e. two or more “zones” which are spatially connected)
- - possibility of multiple presence sensors per zone (useful to pre-guess movement, e.g. turn on hall lights when you move towards – but not in – the hallway)
+  - Strong support for light dimmers, lighting colours, lighting scenes, presence sensors
+-	Designed with the following in mind
+    - open-plan spaces (i.e. two or more “zones” which are spatially connected)
+    - possibility of multiple presence sensors per zone (useful to pre-guess movement, e.g. turn on hall lights when you move towards – but not in – the hallway)
 - Front-end
- - simple front end: allow quick & easy light control from a touchscreen (pensioner / partner-friendly)
- - powerful front end: allow non-techies to tweak / set-up their own lighting scenes (great for kids)
- - advanced front end (separate screen): create or delete zones, create or delete lights and sensors, and attach or remove them from zones (sparky-friendly)
+  - simple front end: allow quick & easy light control from a touchscreen (pensioner / partner-friendly)
+  - powerful front end: allow non-techies to tweak / set-up their own lighting scenes (great for kids)
+  - advanced front end (separate screen): create or delete zones, create or delete lights and sensors, and attach or remove them from zones (sparky-friendly)
 - Back-end:
- - The following are all stored in global context in Node-RED, and persist between reboots: scene settings, currently selected scene, which scene to turn on with presence, current light fixture settings (e.g. percent dimmed / switch status / colour), timestamp of when fixture was created or updated, fixture type e.g. RGB / single colour, etc., scene objects within the zone each containing full suite of settings for each fixture, time delay setting (for presence sensor), ongoing sensor triggers (i.e. timestamp for presence sensing timeouts so if PIR turned the light on for 10 mins and server rebooted in the meantime, this persists), friendly names for scenes, fixtures, sensors, zones, and all mappings of sensors & fixtures to zones.
- - Subflows used to simplify setting up UIs in the back end. (Although you can create and edit zones in the front end, this does not automatically generate UIs in Node-RED. It’s better that way, as you can integrate other automations and widgets into your dashboard then just include a given lighting zone controller where you want.)
- - MQTT support for changing the scene, dimming the scene up and down by a specified amount (e.g. rotary encoder), reporting back changes over MQTT. Family uses voice control a lot e.g. “alexa set living room lights to 4” to set scene number to 4.
+  - The following are all stored in global context in Node-RED, and persist between reboots: scene settings, currently selected scene, which scene to turn on with presence, current light fixture settings (e.g. percent dimmed / switch status / colour), timestamp of when fixture was created or updated, fixture type e.g. RGB / single colour, etc., scene objects within the zone each containing full suite of settings for each fixture, time delay setting (for presence sensor), ongoing sensor triggers (i.e. timestamp for presence sensing timeouts so if PIR turned the light on for 10 mins and server rebooted in the meantime, this persists), friendly names for scenes, fixtures, sensors, zones, and all mappings of sensors & fixtures to zones.
+  - Subflows used to simplify setting up UIs in the back end. (Although you can create and edit zones in the front end, this does not automatically generate UIs in Node-RED. It’s better that way, as you can integrate other automations and widgets into your dashboard then just include a given lighting zone controller where you want.)
+  - MQTT support for changing the scene, dimming the scene up and down by a specified amount (e.g. rotary encoder), reporting back changes over MQTT. Family uses voice control a lot e.g. “alexa set living room lights to 4” to set scene number to 4.
 
 General description
 -------
