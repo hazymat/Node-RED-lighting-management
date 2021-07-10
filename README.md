@@ -19,6 +19,37 @@ What's the use case?
 - You want to create different lighting scenes, optionally even allowing for window blinds to be set as part of the scene
 - You want to be able to control or tweak those scenes from a nice UI, which is family-friendly but powerful
 
+Installation & Setup
+-------
+Prep Node-RED dashboard. Works fine without, but will look odd:
+- Dashboard > theme > set to dark
+- Dashboard > site > set sizes as follows: horizontal 74, 6, 2, 6 and vertical 37, 6, 3, 4
+
+Now import the flow. It contains everything you need to get started including a single zone with UI.
+First in dashboard under the new page Manage Lighting, create some lights, a zone, and assign lights to zone. The IDs should be something like:
+zoneID = gf_kitchen
+zone friendly name = Ground Floor Kitchen
+fixtureID = gf_kitchen_ceiling
+fixture friendly location = Kitchen
+fixture friendly name = Ceiling
+
+Create a multisensor and assign it to a zone. (Leave IP address blank, I just use that for controlling LEDs on my multisensor which is optional)
+
+Now back in Node-RED flows, locate the flow that contains the GetUI subflow. Change the incoming MQTT path of the MQTT node in this flow to match the zone ID you created but keep the rest of that path, e.g. home/light/gf_kitchen/scene. Don't forget to configure that MQTT input to your MQTT server.
+
+Ctrl-double click on Actuate and Store Light to open the subflow and change the MQTT output to configure with your MQTT server.
+
+Double click on GetUI and change the zonename to match the zone that you want to control. Now edit the two template nodes and change the name of the UI tab that you want.
+
+When creating additional zones, you do this from dashboard in order to set up lights and assign them to zones. Then you come into back end to actually add the UI for that zone by copying an existing one, pasting it underneath, then changing the MQTT path and the zonename in GetUI.
+
+So how do you get stuff out of this, to actually control the lights? Control messages come out by MQTT and you hook your lights onto an MQTT input node set with the path like this: home/light/fixtureID
+
+Depending on the light type, it will send a certain type of message, (on/off, dimming, colour, etc.) - attach a debug node and change the light to see what you get.
+
+What I prefer to do is take that message and reformat it for different things I want to control, e.g. Philips Hue, Tasmotas, Sonoffs, Shelly dimmers, KNX lights, LightwaveRF dimmers, WLED, or perhaps Z-Wave lights controlled over MQTT from another system.
+
+
 Overview
 -------
 - The lighting management system has an emphasis on “architectural lighting control”
