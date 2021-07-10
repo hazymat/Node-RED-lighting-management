@@ -1,8 +1,13 @@
 # Node-RED-lighting-management
 
-See this youtube video, which shows the user interface, a demo of the working system (also using Alexa to trigger scenes, but you can use anything you like - it's just an MQTT input), and a brief code walkthrough: https://www.youtube.com/watch?v=wyuGSUfekQc
+- July 2021 udpate: support for multiple sensors per zone, with optional sensor debug.
+- Heart on button denotes default scene to dim to when sensor is triggered. (Highlighted button still shows which scene is currently set.)
 
-Scroll down for screenshots...
+<img src="https://user-images.githubusercontent.com/7063284/125165100-6836eb00-e18d-11eb-9049-a797db564e27.png" width="300" /> <img src="https://user-images.githubusercontent.com/7063284/125165042-2017c880-e18d-11eb-9baf-86a152b8894d.png" width="300" />
+
+
+Youtube video shows an early version without sensor functionality and old UI, but a basic demo of the working system (also using Alexa to trigger scenes, but you can use anything you like - it's just an MQTT input), and a brief code walkthrough: https://www.youtube.com/watch?v=wyuGSUfekQc
+
 
 What is this?
 -------
@@ -17,7 +22,7 @@ What's the use case?
 Overview
 -------
 - The lighting management system has an emphasis on “architectural lighting control”
-  - Strong support for light dimmers, lighting colours, lighting scenes, presence sensors
+  - Strong support for light dimmers, lighting colours, lighting scenes, presence sensors. Also supports light switches (i.e. non-dimmable).
 -	Designed with the following in mind
     - open-plan spaces (i.e. two or more “zones” which are spatially connected)
     - possibility of multiple presence sensors per zone (useful to pre-guess movement, e.g. turn on hall lights when you move towards – but not in – the hallway)
@@ -109,8 +114,6 @@ Note about Configuration Storage
    - **fixtures** (including the fixture's capabilities such as dimmable single colour, dimmable RGB, dimmable RGBW, RGBWW, individually addressable LEDs etc, and the light fixture's current state in terms of its colour, brightness etc.)
    - **zones**. This object type also includes **scene configuration** as follows. When you start to add scenes to a given zone, the settings for each individual light for that scene - at the time of creating the scene - are stored in the zone. In fact, when we save a scene, we are storing a snapshop of all the fixture objects for those fixtures mapped to the zone at that time. This does mean that if we move a fixture from one zone to another then we'd need to manually update each scene, otherwise it will still change the light which has now been moved to another room. Updating the scenes is really quick and easy though, and is done again from front end UI.
    - **fixture-to-zone mappings**.
-
-Screenshot of front end 1: ![frontend1](https://user-images.githubusercontent.com/7063284/77906908-a94d0980-7280-11ea-9722-7e968f1d118e.jpg)
 
 Screenshot of front end 2: ![frontend2](https://user-images.githubusercontent.com/7063284/77906912-a9e5a000-7280-11ea-8e43-3de2368d6189.jpg)
 
