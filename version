@@ -1,5 +1,12 @@
 Version
 
+10/07/2021
+- Loads of CSS updates, panels with inner shadow / rounded corners etc., nicer panel titles
+- Optional zone sensor debug UI, which shows
+ - status (triggering status, time remaining on timer, or idle)
+ - triggered by (i.e. which sensor caused the trigger)
+ - triggered at (e.g. 4 seconds ago, 12 minutes ago, 2 days ago etc.)
+
 02/07/2021
 - Support for switches in the scene
 - Support for a master dimmer for the zone (can be enabled / disabled)
