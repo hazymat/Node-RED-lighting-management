@@ -1,6 +1,6 @@
 # Node-RED-lighting-management
 
-- July 2021 udpate: support for multiple sensors per zone, with optional sensor debug.
+- July 2021 udpate: support for multiple multisensors per zone, with optional sensor debug (see Github project <a href="https://github.com/hazymat/sensible">multisensor</a>)
 - Heart on button denotes default scene to dim to when sensor is triggered. (Highlighted button still shows which scene is currently set.)
 
 <img src="https://user-images.githubusercontent.com/7063284/125165100-6836eb00-e18d-11eb-9049-a797db564e27.png" width="300" /> <img src="https://user-images.githubusercontent.com/7063284/125165042-2017c880-e18d-11eb-9baf-86a152b8894d.png" width="300" />
