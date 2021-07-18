@@ -6,6 +6,7 @@ Version
  - which sensor started or stopped detecting
  - whether the detection caused the light to go on
  - also included: timestamp for when the zone timer timed-out (i.e. light went off)
+ - Note: debug logging only implemented for audio trigger mode, not audio extend mode
 
 10/07/2021
 - Loads of CSS updates, panels with inner shadow / rounded corners etc., nicer panel titles
