@@ -1,5 +1,12 @@
 Version
 
+18/07/2021
+- Zone trigger debug panel now shows a trigger history for the zone. In includes:
+ - timestamp for each action
+ - which sensor started or stopped detecting
+ - whether the detection caused the light to go on
+ - also included: timestamp for when the zone timer timed-out (i.e. light went off)
+
 10/07/2021
 - Loads of CSS updates, panels with inner shadow / rounded corners etc., nicer panel titles
 - Optional zone sensor debug UI, which shows
